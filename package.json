@@ -1,0 +1,16 @@
+{
+  "name": "dhooghe-ci-exercice5",
+  "version": "1.0.0",
+  "description": "Exercice 5 Continuous Integration",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^5.93.0",
+    "webpack-cli": "^5.1.4"
+  }
+}
