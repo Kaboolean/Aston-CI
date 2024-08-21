@@ -44,14 +44,8 @@ jobs:
       - name: Build application
         run: npm run build
 
-      - name: List files
-        run: ls -la ./builds
-
       - name: Save artifacts
         uses: actions/upload-artifact@v3
-        with:
-          name: build-${{ matrix.os }}-node-${{ matrix.node_version }}
-          path: ./builds
 
   conditional-job:
     if: github.ref == 'refs/heads/main'
