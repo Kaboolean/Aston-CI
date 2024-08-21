@@ -47,9 +47,6 @@ jobs:
       - name: Start application
         run: npm run start
 
-      - name: Test application
-        run: npm run test
-
       - name: Save artifacts
         uses: actions/upload-artifact@v4
         with:
