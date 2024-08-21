@@ -31,10 +31,10 @@ jobs:
 
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       
       - name: Install nodejs
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node_version }}
           
@@ -51,24 +51,24 @@ jobs:
         run: ls
 
       - name: Save artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: build-${{ matrix.os }}-node-${{ matrix.node_version }}
-          path: /builds
+          path: builds/
 
-  conditional-job:
-    if: github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
-    needs: build
+  # conditional-job:
+  #   if: github.ref == 'refs/heads/main'
+  #   runs-on: ubuntu-latest
+  #   needs: build
 
-    steps:
-      - uses: actions/checkout@v3
+  #   steps:
+  #     - uses: actions/checkout@v4
 
-      - name: DL ubuntu 18 artifact
-        uses: actions/download-artifact@v3
-        with:
-          name: build-ubuntu-latest-node-18
-          path: /builds
+  #     - name: DL ubuntu 18 artifact
+  #       uses: actions/download-artifact@v4
+  #       with:
+  #         name: build-ubuntu-latest-node-18
+  #         path: /builds
 
-      - name: Simulation déploiement
-        run: echo "Déploiement ..."
+  #     - name: Simulation déploiement
+  #       run: echo "Déploiement ..."
