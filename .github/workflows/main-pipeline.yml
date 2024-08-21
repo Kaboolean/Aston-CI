@@ -47,7 +47,7 @@ jobs:
       - name: Save artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: build-${{ matrix.os }}-node-${{ matrix.node }}
+          name: build-${{ matrix.os }}-node-${{ matrix.node_version }}
           path: ./builds
 
   conditional-job:
