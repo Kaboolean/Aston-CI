@@ -44,31 +44,25 @@ jobs:
       - name: Build application
         run: npm run build
 
-      # - name: Create builds directory
-      #   run: mkdir -p builds
-
-      - name: List files
-        run: ls
-
       - name: Save artifacts
         uses: actions/upload-artifact@v4
         with:
           name: build-${{ matrix.os }}-node-${{ matrix.node_version }}
           path: dist/
 
-  # conditional-job:
-  #   if: github.ref == 'refs/heads/main'
-  #   runs-on: ubuntu-latest
-  #   needs: build
+  conditional-job:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    needs: build
 
-  #   steps:
-  #     - uses: actions/checkout@v4
+    steps:
+      - uses: actions/checkout@v4
 
-  #     - name: DL ubuntu 18 artifact
-  #       uses: actions/download-artifact@v4
-  #       with:
-  #         name: build-ubuntu-latest-node-18
-  #         path: /builds
+      - name: DL ubuntu 18 artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: build-ubuntu-latest-node-18
+          path: dist/
 
-  #     - name: Simulation déploiement
-  #       run: echo "Déploiement ..."
+      - name: Simulation déploiement
+        run: echo "Déploiement ..."
