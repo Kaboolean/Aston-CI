@@ -33,7 +33,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       
-      - name: install nodejs
+      - name: Install nodejs
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node_version }}
@@ -44,7 +44,7 @@ jobs:
       - name: Build application
         run: npm run build
 
-      - name: Save build artifacts
+      - name: Save artifacts
         uses: actions/upload-artifact@v3
         with:
           name: build-${{ matrix.os }}-node-${{ matrix.node }}
@@ -58,10 +58,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Download build artifact
+      - name: DL ubuntu 18 artifact
         uses: actions/download-artifact@v3
         with:
           name: build-ubuntu-latest-node-18  # Spécifique à Ubuntu + Node 18
+          path: ./build
 
-      - name: Simulate deployment
-        run: echo "Deploying the application built with Ubuntu and Node 18..."
+      - name: Simulation déploiement
+        run: echo "Déploiement ..."
