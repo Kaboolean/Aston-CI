@@ -48,7 +48,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: build-${{ matrix.os }}-node-${{ matrix.node }}
-          path: ./build
+          path: ./builds
 
   conditional-job:
     if: github.ref == 'refs/heads/main'  # Ce job ne s'exécute que sur la branche main
@@ -62,7 +62,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: build-ubuntu-latest-node-18  # Spécifique à Ubuntu + Node 18
-          path: ./build
+          path: ./builds
 
       - name: Simulation déploiement
         run: echo "Déploiement ..."
