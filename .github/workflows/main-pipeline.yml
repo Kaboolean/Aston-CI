@@ -44,8 +44,8 @@ jobs:
       - name: Build application
         run: npm run build
 
-      - name: Create builds directory
-        run: mkdir -p builds
+      # - name: Create builds directory
+      #   run: mkdir -p builds
 
       - name: List files
         run: ls
@@ -54,7 +54,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: build-${{ matrix.os }}-node-${{ matrix.node_version }}
-          path: builds/
+          path: dist/
 
   # conditional-job:
   #   if: github.ref == 'refs/heads/main'
