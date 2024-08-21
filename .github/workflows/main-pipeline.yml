@@ -54,7 +54,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: build-${{ matrix.os }}-node-${{ matrix.node_version }}
-          path: builds/
+          path: builds/build-${{ matrix.os }}-node-${{ matrix.node_version }}.zip
 
       - name: ls2
         run: ls
