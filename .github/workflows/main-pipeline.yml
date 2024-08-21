@@ -44,20 +44,17 @@ jobs:
       - name: Build application
         run: npm run build
 
-      - name: Build directory
-        run: mkdir -p builds/
+      - name: Start application
+        run: npm run start
 
-      - name: ls1
-        run: ls
+      - name: Test application
+        run: npm run test
 
       - name: Save artifacts
         uses: actions/upload-artifact@v4
         with:
           name: build-${{ matrix.os }}-node-${{ matrix.node_version }}
-          path: builds/build-${{ matrix.os }}-node-${{ matrix.node_version }}.zip
-
-      - name: ls2
-        run: ls
+          path: dist/
 
   conditional-job:
     if: github.ref == 'refs/heads/main'
